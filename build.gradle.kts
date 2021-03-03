@@ -41,11 +41,9 @@ distributions {
 //        distributionBaseName.set("someName")
         contents {
 //            from("TreeMap API for Scale-Swing Developer Guide.pdf")
-        }
-
-        contents {
-            from("../treemap/build/dokka/html/")
-            into("dokka")
+            from("../treemap/build/dokka/html/") {
+                into("dokka")
+            }
         }
     }
 }
