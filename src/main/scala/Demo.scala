@@ -13,14 +13,14 @@ import org.molap.dataframe.JsonDataFrame
 
 import javax.swing._
 import java.awt._
-import java.io.IOException
+import java.io.InputStream
 
 
 object Demo extends App {
   TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
 
-  val json: String = new String(getClass.getResourceAsStream("Forbes Global 2000 - 2020.json").readAllBytes,"UTF-8")
-  val dataFrame: DataFrame[Integer, String, AnyRef] = new JsonDataFrame(json)
+  val inputStream: InputStream = getClass.getResourceAsStream("Forbes Global 2000 - 2020.json")
+  val dataFrame: DataFrame[Integer, String, AnyRef] = JsonDataFrame.fromInputStream(inputStream)
   val treeMap: AbstractTreeMap[Integer, String] = new DefaultTreeMap[Integer, String](dataFrame)
 
   val model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String] = treeMap.getModel
