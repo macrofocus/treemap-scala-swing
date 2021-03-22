@@ -40,7 +40,12 @@ distributions {
     main {
 //        distributionBaseName.set("someName")
         contents {
-//            from("TreeMap API for Scale-Swing Developer Guide.pdf")
+            from(".") {
+                exclude("build/**")
+                exclude("yarn.lock")
+            }
+
+//            from("TreeMap API for Scala-Swing Developer Guide.pdf")
             from("../treemap/build/dokka/html/") {
                 into("dokka")
             }
