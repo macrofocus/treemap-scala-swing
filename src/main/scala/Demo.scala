@@ -14,6 +14,7 @@ import org.molap.dataframe.JsonDataFrame
 import javax.swing._
 import java.awt._
 import java.io.InputStream
+import java.util
 
 
 object Demo extends App {
@@ -30,13 +31,13 @@ object Demo extends App {
   settings.setRendering(RenderingFactory.getFLAT)
 
   // Group by
-  settings.setGroupByByNames("Sector", "Industry")
+  settings.setGroupByColumns(util.Arrays.asList("Sector", "Industry"))
 
   // Size
-  settings.setSizeByName("Market Value")
+  settings.setSizeColumn("Market Value")
 
   // Color
-  settings.setColorByName("Profits")
+  settings.setColorColumn("Profits")
   val profitsSettings: TreeMapColumnSettings = settings.getColumnSettings("Profits")
   val negpos: FixedPalette = new PaletteFactory().get("negpos").getPalette
   val colorMap: MutableColorMap = model.getColorMap("Profits")
