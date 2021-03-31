@@ -3,7 +3,7 @@
 
 import com.treemap.{AbstractTreeMapNode, Rendering, RenderingFactory, TreeMapModel, TreeMapSettings, _}
 import org.mkui.colormap.MutableColorMap
-import org.mkui.font.CPFont
+import org.mkui.font.MkFont
 import org.mkui.labeling.EnhancedLabel
 import org.mkui.palette.FixedPalette
 import org.mkui.palette.PaletteFactory
@@ -46,7 +46,7 @@ object Demo extends App {
 
   // Label
   val companySettings: TreeMapColumnSettings = settings.getColumnSettings("Company")
-  companySettings.setLabelingFont(new CPFont(new Font("Helvetica", Font.PLAIN, 9))) // 9 points is the minimum size that will be displayed
+  companySettings.setLabelingFont(new MkFont(new Font("Helvetica", Font.PLAIN, 9))) // 9 points is the minimum size that will be displayed
 
   companySettings.setLabelingMinimumCharactersToDisplay(5)
   companySettings.setLabelingResizeTextToFitShape(true)
