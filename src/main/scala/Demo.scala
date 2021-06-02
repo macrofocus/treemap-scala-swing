@@ -20,7 +20,7 @@ import java.util
 object Demo extends App {
   TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
 
-  val inputStream: InputStream = getClass.getResourceAsStream("Forbes Global 2000 - 2020.json")
+  val inputStream: InputStream = getClass.getResourceAsStream("Forbes Global 2000 - 2021.json")
   val dataFrame: DataFrame[Integer, String, AnyRef] = JsonDataFrame.fromInputStream(inputStream)
   val treeMap: AbstractTreeMap[Integer, String] = new DefaultTreeMap[Integer, String](dataFrame)
 
