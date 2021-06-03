@@ -1,7 +1,7 @@
 // https://youtrack.jetbrains.com/issue/KT-44845
 //import com.treemap.DefaultTreeMap
 
-import com.treemap.{AbstractTreeMapNode, Rendering, RenderingFactory, TreeMapModel, TreeMapSettings, _}
+import com.treemap.{AbstractTreeMapNode, Algorithm, AlgorithmFactory, Rendering, RenderingFactory, TreeMapModel, TreeMapSettings, _}
 import org.mkui.colormap.MutableColorMap
 import org.mkui.font.crossplatform.CPFont
 import org.mkui.labeling.EnhancedLabel
@@ -75,6 +75,7 @@ object Demo extends App {
     configuration.add(createGroupBy(Orientation.Vertical, model, settings))
     configuration.add(createSizeComboBox(model, settings))
     configuration.add(createColorComboBox(model, settings))
+    configuration.add(createAlgorithmComboBox(settings.getDefaultColumnSettings))
     configuration.add(createRenderingComboBox(settings))
     configuration.add(Box.createGlue)
     return configuration
@@ -111,6 +112,17 @@ object Demo extends App {
     sizeComboBox.setBorder(BorderFactory.createTitledBorder("Size"))
     sizeComboBox.setAlignmentX(0)
     return sizeComboBox
+  }
+
+  private def createAlgorithmComboBox(settings: TreeMapColumnSettings): JComboBox[Algorithm] = {
+    val algorithmComboBox: JComboBox[Algorithm] = new JComboBox[Algorithm]((new SingleSelectionComboBoxModel[Algorithm](settings.getAlgorithmProperty, AlgorithmFactory.getInstance.getAlgorithms))) {
+      override def getMaximumSize: Dimension = {
+        return super.getPreferredSize
+      }
+    }
+    algorithmComboBox.setBorder(BorderFactory.createTitledBorder("Algorithm"))
+    algorithmComboBox.setAlignmentX(0)
+    return algorithmComboBox
   }
 
   private def createRenderingComboBox(settings: TreeMapSettings[String]): JComboBox[Rendering] = {
