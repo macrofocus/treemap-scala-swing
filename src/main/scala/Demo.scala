@@ -1,20 +1,16 @@
 // https://youtrack.jetbrains.com/issue/KT-44845
 //import com.treemap.DefaultTreeMap
 
-import com.treemap.{AbstractTreeMapNode, Algorithm, AlgorithmFactory, Rendering, RenderingFactory, TreeMapModel, TreeMapSettings, _}
+import com.treemap.{TreeMapModel, TreeMapSettings, _}
 import org.mkui.colormap.MutableColorMap
 import org.mkui.font.crossplatform.CPFont
-import org.mkui.labeling.EnhancedLabel
-import org.mkui.palette.FixedPalette
-import org.mkui.palette.PaletteFactory
 import org.mkui.swing.{HierarchicalComboBox, Orientation, SingleSelectionComboBoxModel}
-import org.molap.dataframe.DataFrame
 import org.molap.dataframe.JsonDataFrame
 
-import javax.swing._
 import java.awt._
 import java.io.InputStream
 import java.util
+import javax.swing._
 
 
 object Demo extends App {
