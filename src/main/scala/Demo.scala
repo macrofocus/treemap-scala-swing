@@ -5,7 +5,9 @@ import com.treemap.{TreeMapModel, TreeMapSettings, _}
 import org.mkui.colormap.MutableColorMap
 import org.mkui.font.crossplatform.CPFont
 import org.mkui.swing.{HierarchicalComboBox, Orientation, SingleSelectionComboBoxModel}
-import org.molap.dataframe.JsonDataFrame
+import org.molap.dataframe.{DataFrame, JsonDataFrame}
+import org.mkui.labeling.EnhancedLabel
+import org.mkui.palette.{FixedPalette, PaletteFactory}
 
 import java.awt._
 import java.io.InputStream
