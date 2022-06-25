@@ -27,14 +27,20 @@ configurations.all {
 dependencies {
     implementation("org.scala-lang:scala-library:2.13.8")
 
-    val kotlinVersion: String by project
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-
-    val macrofocusVersion: String by project
-    implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
-    implementation("org.molap:molap:$macrofocusVersion")
-    implementation("org.macrofocus:mkui:$macrofocusVersion")
-    implementation("com.treemap:treemap:$macrofocusVersion")}
+    val localDependencies: String? by project
+    if (localDependencies != null && localDependencies.toBoolean()) {
+        implementation(project(":macrofocus-common"))
+        implementation(project(":molap"))
+        implementation(project(":mkui"))
+        implementation(project(":treemap"))
+    } else {
+        val macrofocusVersion: String by project
+        implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
+        implementation("org.molap:molap:$macrofocusVersion")
+        implementation("org.macrofocus:mkui:$macrofocusVersion")
+        implementation("com.treemap:treemap:$macrofocusVersion")
+    }
+}
 
 application {
     mainClass.set("Demo")
