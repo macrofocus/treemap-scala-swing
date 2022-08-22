@@ -16,7 +16,7 @@ import javax.swing._
 
 
 object Demo extends App {
-  TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
+//  TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
 
   val inputStream: InputStream = getClass.getResourceAsStream("Forbes Global 2000 - 2021.json")
   val dataFrame: DataFrame[Integer, String, AnyRef] = JsonDataFrame.fromInputStream(inputStream)
