@@ -25,7 +25,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation("org.scala-lang:scala-library:2.13.9")
+    implementation("org.scala-lang:scala-library:2.13.10")
 
     val localDependencies: String? by project
     if (localDependencies != null && localDependencies.toBoolean()) {
