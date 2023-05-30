@@ -37,7 +37,7 @@ dependencies {
         val macrofocusVersion: String by project
         implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
         implementation("org.molap:molap:$macrofocusVersion")
-        implementation("org.macrofocus:mkui:$macrofocusVersion")
+        implementation("org.mkui:mkui:$macrofocusVersion")
         implementation("com.treemap:treemap:$macrofocusVersion")
     }
 }
