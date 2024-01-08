@@ -91,7 +91,7 @@ object Demo extends App {
   }
 
   private def createSizeComboBox(model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String], settings: TreeMapSettings[String]): JComboBox[String] = {
-    val sizeComboBox: JComboBox[String] = new JComboBox[String]((new SingleSelectionComboBoxModel[String](settings.getSizeColumnSelection, model.getSizepColumns))) {
+    val sizeComboBox: JComboBox[String] = new JComboBox[String]((new SingleSelectionComboBoxModel[String](settings.getSizeColumnSelection, model.getSizeColumns))) {
       override def getMaximumSize: Dimension = {
         return super.getPreferredSize
       }
