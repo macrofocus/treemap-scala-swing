@@ -80,7 +80,7 @@ object Demo extends App {
   }
 
   private def createGroupBy(orientation: Orientation, model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String], settings: TreeMapSettings[String]): HierarchicalComboBox[String] = {
-    val groupBy: HierarchicalComboBox[String] = new HierarchicalComboBox[String](orientation, settings.getGroupByFieldsSelection, model.getGroupByTreeMapColumns) {
+    val groupBy: HierarchicalComboBox[String] = new HierarchicalComboBox[String](orientation, settings.getGroupByColumnsSelection, model.getGroupByColumns) {
       override def getMaximumSize: Dimension = {
         return super.getPreferredSize
       }
@@ -91,7 +91,7 @@ object Demo extends App {
   }
 
   private def createSizeComboBox(model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String], settings: TreeMapSettings[String]): JComboBox[String] = {
-    val sizeComboBox: JComboBox[String] = new JComboBox[String]((new SingleSelectionComboBoxModel[String](settings.getSizeFieldSelection, model.getSizeTreeMapColumns))) {
+    val sizeComboBox: JComboBox[String] = new JComboBox[String]((new SingleSelectionComboBoxModel[String](settings.getSizeColumnSelection, model.getSizepColumns))) {
       override def getMaximumSize: Dimension = {
         return super.getPreferredSize
       }
@@ -102,7 +102,7 @@ object Demo extends App {
   }
 
   private def createColorComboBox(model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String], settings: TreeMapSettings[String]): JComboBox[String] = {
-    val sizeComboBox: JComboBox[String] = new JComboBox[String]((new SingleSelectionComboBoxModel[String](settings.getColorColumnSelection, model.getColorTreeMapColumns))) {
+    val sizeComboBox: JComboBox[String] = new JComboBox[String]((new SingleSelectionComboBoxModel[String](settings.getColorColumnSelection, model.getColorColumns))) {
       override def getMaximumSize: Dimension = {
         return super.getPreferredSize
       }
