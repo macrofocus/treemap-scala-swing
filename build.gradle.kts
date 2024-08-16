@@ -1,3 +1,9 @@
+val swingEnabled: String by project
+val javaFxEnabled: String by project
+val androidEnabled: String by project
+val composeEnabled: String by project
+val doodleEnabled: String by project
+
 plugins {
     scala
     application
