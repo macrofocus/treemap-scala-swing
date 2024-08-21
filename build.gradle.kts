@@ -1,9 +1,3 @@
-val swingEnabled: String by project
-val javaFxEnabled: String by project
-val androidEnabled: String by project
-val composeEnabled: String by project
-val doodleEnabled: String by project
-
 plugins {
     scala
     application
@@ -26,9 +20,7 @@ repositories {
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
 configurations.all {
     afterEvaluate {
-        if (swingEnabled != "false") {
-            attributes.attribute(frameworkAttribute, "swing")
-        }
+        attributes.attribute(frameworkAttribute, "swing")
     }
 }
 
