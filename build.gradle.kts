@@ -52,6 +52,7 @@ distributions {
 //        distributionBaseName.set("someName")
         contents {
             from(".") {
+                exclude(".gradle/**")
                 exclude("build/**")
                 exclude("yarn.lock")
             }
