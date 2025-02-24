@@ -38,8 +38,8 @@ dependencies {
         val macrofocusVersion: String by project
         implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
         implementation("org.molap:molap:$macrofocusVersion")
-        implementation("org.mkui:mkui:$macrofocusVersion")
-        implementation("com.treemap:treemap:$macrofocusVersion")
+        implementation("org.mkui:mkui-swing:$macrofocusVersion")
+        implementation("com.treemap:treemap-swing:$macrofocusVersion")
     }
 }
 
@@ -58,9 +58,9 @@ distributions {
             }
 
 //            from("TreeMap API for Scala-Swing Developer Guide.pdf")
-            from("../treemap/build/dokka/html/") {
-                into("dokka")
-            }
+//            from("../treemap/build/dokka/html/") {
+//                into("dokka")
+//            }
         }
     }
 }
