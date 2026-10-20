@@ -28,14 +28,14 @@ dependencies {
     implementation("org.scala-lang:scala3-library_3:3.3.1")
 //    implementation("org.scala-lang:scala-library:2.13.12")
 
-    val localDependencies: String? by project
+    val localDependencies = project.findProperty("localDependencies") as String?
     if(localDependencies != null && localDependencies.toBoolean()) {
         implementation(project(":macrofocus-common"))
         implementation(project(":molap"))
         implementation(project(":mkui"))
         implementation(project(":treemap"))
     } else {
-        val macrofocusVersion: String by project
+        val macrofocusVersion = project.property("macrofocusVersion") as String
         implementation("org.macrofocus:macrofocus-common:$macrofocusVersion")
         implementation("org.molap:molap:$macrofocusVersion")
         implementation("org.mkui:mkui-swing:$macrofocusVersion")
