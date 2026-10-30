@@ -8,8 +8,7 @@ tasks.compileJava {
 }
 
 repositories {
-    maven { url = uri("https://archiva.macrofocus.com/repository/public/") }
-    maven { url = uri("https://archiva.macrofocus.com/repository/snapshots/") }
+    maven { url = uri("https://maven.macrofocus.com/releases") }
     mavenCentral()
 
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev/")
