@@ -18,9 +18,7 @@ repositories {
 
 val frameworkAttribute = Attribute.of("mkui", String::class.java)
 configurations.all {
-    afterEvaluate {
-        attributes.attribute(frameworkAttribute, "swing")
-    }
+    attributes.attribute(frameworkAttribute, "swing")
 }
 
 dependencies {
