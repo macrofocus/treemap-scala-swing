@@ -4,7 +4,12 @@ plugins {
 }
 
 tasks.compileJava {
-    options.release.set(11)
+    options.release.set(17)
+}
+
+// Gradle otherwise passes the version of the running JDK to -java-output-version, which Scala may not know yet
+tasks.withType<ScalaCompile>().configureEach {
+    targetCompatibility = "17"
 }
 
 repositories {
@@ -22,7 +27,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation("org.scala-lang:scala3-library_3:3.3.1")
+    implementation("org.scala-lang:scala3-library_3:3.10.1")
 //    implementation("org.scala-lang:scala-library:2.13.12")
 
     val localDependencies = project.findProperty("localDependencies") as String?

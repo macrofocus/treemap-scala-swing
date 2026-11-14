@@ -15,57 +15,59 @@ import java.util
 import javax.swing._
 
 
-object Demo extends App {
-//  TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
+object Demo {
+  def main(args: Array[String]): Unit = {
+  //  TreeMap.setLicenseKey("My Company", "ABC12-ABC12-ABC12-ABC12-ABC12-ABC12")
 
-  val inputStream: InputStream = getClass.getResourceAsStream("Forbes Global 2000 - 2021.json")
-  val dataFrame: DataFrame[Integer, String, AnyRef] = JsonDataFrame.fromInputStream(inputStream)
-  val treeMap: AbstractTreeMap[Integer, String] = new DefaultTreeMap[Integer, String](dataFrame)
+    val inputStream: InputStream = getClass.getResourceAsStream("Forbes Global 2000 - 2021.json")
+    val dataFrame: DataFrame[Integer, String, AnyRef] = JsonDataFrame.fromInputStream(inputStream)
+    val treeMap: AbstractTreeMap[Integer, String] = new DefaultTreeMap[Integer, String](dataFrame)
 
-  val model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String] = treeMap.getModel
-  val settings: TreeMapSettings[String] = model.getSettings
+    val model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String] = treeMap.getModel
+    val settings: TreeMapSettings[String] = model.getSettings
 
-  // General
-  settings.setRendering(RenderingFactory.getFLAT)
+    // General
+    settings.setRendering(RenderingFactory.getFLAT)
 
-  // Group by
-  settings.setGroupByColumns(util.Arrays.asList("Sector", "Industry"))
+    // Group by
+    settings.setGroupByColumns(util.Arrays.asList("Sector", "Industry"))
 
-  // Size
-  settings.setSizeColumn("Market Value")
+    // Size
+    settings.setSizeColumn("Market Value")
 
-  // Color
-  settings.setColorColumn("Profits")
-  val profitsSettings: TreeMapColumnSettings = settings.getColumnSettings("Profits")
-  val negpos: FixedPalette = new PaletteFactory().get("negpos").getPalette
-  val colorMap: MutableColorMap = model.getColorMap("Profits")
-  colorMap.setPalette(negpos)
-  colorMap.getInterval.setValue(-(88.205), 176.41)
+    // Color
+    settings.setColorColumn("Profits")
+    val profitsSettings: TreeMapColumnSettings = settings.getColumnSettings("Profits")
+    val negpos: FixedPalette = new PaletteFactory().get("negpos").getPalette
+    val colorMap: MutableColorMap = model.getColorMap("Profits")
+    colorMap.setPalette(negpos)
+    colorMap.getInterval.setValue(-(88.205), 176.41)
 
-  // Label
-  val companySettings: TreeMapColumnSettings = settings.getColumnSettings("Company")
-  companySettings.setLabelingFont(new CPFont(new Font("Helvetica", Font.PLAIN, 9)).getNativeFont()) // 9 points is the minimum size that will be displayed
+    // Label
+    val companySettings: TreeMapColumnSettings = settings.getColumnSettings("Company")
+    companySettings.setLabelingFont(new CPFont(new Font("Helvetica", Font.PLAIN, 9)).getNativeFont()) // 9 points is the minimum size that will be displayed
 
-  companySettings.setLabelingMinimumCharactersToDisplay(5)
-  companySettings.setLabelingResizeTextToFitShape(true)
-  companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER)
-  companySettings.setLabelingHorizontalAlignment(EnhancedLabel.CENTER)
+    companySettings.setLabelingMinimumCharactersToDisplay(5)
+    companySettings.setLabelingResizeTextToFitShape(true)
+    companySettings.setLabelingVerticalAlignment(EnhancedLabel.CENTER)
+    companySettings.setLabelingHorizontalAlignment(EnhancedLabel.CENTER)
 
-  val configuration: JPanel = createConfiguration(model, settings)
+    val configuration: JPanel = createConfiguration(model, settings)
 
-  val splitPane: JSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, configuration, treeMap.getComponent.getNativeComponent)
+    val splitPane: JSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true, configuration, treeMap.getComponent.getNativeComponent)
 
-  val mainPanel: JPanel = new JPanel(new BorderLayout)
-  mainPanel.add(createGroupBy(Orientation.Horizontal, model, settings), BorderLayout.NORTH)
-  mainPanel.add(splitPane)
+    val mainPanel: JPanel = new JPanel(new BorderLayout)
+    mainPanel.add(createGroupBy(Orientation.Horizontal, model, settings), BorderLayout.NORTH)
+    mainPanel.add(splitPane)
 
-  val frame: JFrame = new JFrame("TreeMap")
+    val frame: JFrame = new JFrame("TreeMap")
 
-  frame.getContentPane.add(mainPanel)
-  frame.setSize(1024, 768)
-  frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE)
-  frame.setLocationRelativeTo(null)
-  frame.setVisible(true)
+    frame.getContentPane.add(mainPanel)
+    frame.setSize(1024, 768)
+    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE)
+    frame.setLocationRelativeTo(null)
+    frame.setVisible(true)
+  }
 
   private def createConfiguration(model: TreeMapModel[AbstractTreeMapNode[Integer, String], Integer, String], settings: TreeMapSettings[String]): JPanel = {
     val configuration: JPanel = new JPanel
