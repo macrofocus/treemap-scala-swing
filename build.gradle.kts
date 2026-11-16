@@ -10,6 +10,7 @@ tasks.compileJava {
 // Gradle otherwise passes the version of the running JDK to -java-output-version, which Scala may not know yet
 tasks.withType<ScalaCompile>().configureEach {
     targetCompatibility = "17"
+    scalaCompileOptions.additionalParameters = listOf("-java-output-version", "17")
 }
 
 repositories {
